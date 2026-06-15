@@ -1,0 +1,684 @@
+/* ===========================
+   ROVINA 7 — Main Stylesheet
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap');
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f0ece3;
+  color: #111;
+  font-family: 'Raleway', Arial, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* --- CENTERED CONTAINER --- */
+/* Every section's inner content is wrapped in this to stay centered */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* --- HEADER / LOGO --- */
+.site-header {
+  background-color: #f0ece3;
+  padding-top: 18px;
+  padding-bottom: 0;
+}
+
+.logo {
+  font-family: 'Raleway', Impact, sans-serif;
+  font-size: clamp(72px, 16vw, 160px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 0.92;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+/* --- NAV --- */
+.main-nav {
+  background-color: #0d0d0d;
+}
+
+.main-nav .container {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+}
+
+.main-nav a {
+  color: #f0ece3;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.main-nav a:hover {
+  opacity: 0.65;
+}
+
+/* --- ABOUT SECTION --- */
+.about-section {
+  background-color: #f0ece3;
+  padding-top: 36px;
+  padding-bottom: 32px;
+}
+
+.about-inner {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.about-photo {
+  flex: 0 0 260px;
+}
+
+.about-photo img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) contrast(1.05);
+}
+
+.about-text {
+  flex: 1;
+  padding-top: 4px;
+}
+
+.section-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 0.95;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  margin-bottom: 11px;
+}
+
+.subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  margin-bottom: 11px;
+}
+
+.subtitle a {
+  color: inherit;        /* keeps the same color as .subtitle */
+  text-decoration: none; /* removes underline */
+}
+
+.subtitle a:hover {
+  text-decoration: none;
+}
+
+.bio {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+/* --- DIVIDER --- */
+.divider {
+  border: none;
+  border-top: 2px solid #0d0d0d;
+  /* Full-width divider, no side margins */
+  margin: 0;
+}
+
+/* --- RELEASES SECTION --- */
+.releases-section {
+  background-color: #f0ece3;
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+
+.releases-heading {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.releases-sub {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  margin-bottom: 24px;
+}
+
+/* --- ALBUM GRID --- */
+.releases-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  /* Left-align albums within the centered container, matching the design */
+  justify-content: flex-start;
+}
+
+.album {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+/* Album cover wrapper */
+.album-cover {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.album-cover:hover {
+  transform: scale(1.02);
+}
+
+.evenground {
+  background-color: #0a0a0a;
+  padding: 0;
+}
+
+.saudade {
+  background-color: #e8e2d4;
+  padding: 11px 0 0 0;
+}
+
+.album-artist-name {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.evenground .album-artist-name { color: #0d0d0d; }
+.saudade .album-artist-name    { color: #0d0d0d; }
+
+.album-title-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.even-ground .album-title-text { color: #f0ece3; }
+
+.eg-art {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saudade-art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.saudade-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.evenground-art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.evenground-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.album-label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+  background-color: #f0ece3;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.contact-cta {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  margin-bottom: 6px;
+}
+
+.contact-link {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+
+.contact-link:hover { opacity: 0.55; }
+
+/* --- FOOTER --- */
+.site-footer {
+  padding: 18px 40px;
+  background-color: #f0ece3;
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #0d0d0d;
+  color: #0d0d0d;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.social-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.social-btn:hover {
+  border-color: #555;
+  color: #555;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  .about-inner {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-photo {
+    flex: none;
+    width: 100%;
+  }
+
+  .main-nav ul {
+    gap: 18px;
+  }
+
+  .album-cover {
+    width: 220px;
+    height: 220px;
+  }
+
+  .site-footer {
+    padding: 18px;
+  }
+}
+
+/* ─── SCROLL REVEAL ANIMATIONS ─────────────────────────────────────────── */
+
+/* Initial hidden state — elements start shifted down and invisible */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 2.0s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2.0s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stagger child elements so they appear one after another */
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+
+/* Triggered state — JS adds this class when element enters viewport */
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   MODALS
+   ═══════════════════════════════════════════ */
+
+/* Backdrop */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+/* Panel */
+.modal-panel {
+  position: relative;
+  background: #f0ece3;
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  /* Slide up animation */
+  animation: modalIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #000000;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 4px 8px;
+}
+
+.modal-close:hover { opacity: 1; }
+
+/* Inner layout: art left, text right */
+.modal-inner {
+  display: flex;
+  gap: 0;
+}
+
+.modal-art {
+  flex: 0 0 260px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: stretch;
+}
+
+.modal-art-saudade {
+  background: #f0ece3;
+}
+
+.modal-art-evenground {
+  background: #f0ece3;
+}
+
+.modal-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-content {
+  flex: 1;
+  padding: 36px 36px 36px 32px;
+  text-align: left;
+}
+
+.modal-artist {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.modal-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 44px);
+  color: #0d0d0d;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.modal-year {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.modal-description {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  border-top: 1px solid #ddd;
+  padding-top: 18px;
+}
+
+/* Tracklist */
+.modal-tracklist {
+  margin-bottom: 24px;
+}
+
+.modal-tracklist-label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.modal-tracklist ol {
+  list-style: decimal;
+  padding-left: 18px;
+}
+
+.modal-tracklist li {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #222;
+  padding: 4px 0;
+  border-bottom: 1px solid #e8e4dc;
+}
+
+/* Streaming links */
+.modal-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-stream-link {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  text-decoration: none;
+  border: 1.5px solid #0d0d0d;
+  padding: 7px 14px;
+  transition: background 0.18s, color 0.18s;
+}
+
+.modal-stream-link:hover {
+  background: #0d0d0d;
+  color: #f0ece3;
+}
+
+.sound-samples {
+  margin-bottom: 24px;
+}
+
+.sample-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  gap: 16px;
+}
+
+.sample-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+audio {
+  flex: 1;
+  width: 200px;
+  height: 32px;
+  flex-shrink: 0;
+
+}
+
+audio::-webkit-media-controls-panel {
+  background: transparent;
+}
+
+/* Responsive */
+@media (max-width: 580px) {
+  .modal-inner { flex-direction: column; }
+  .modal-art { flex: none; height: 200px; }
+  .modal-content { padding: 24px 20px; }
+  .modal { padding: 12px; }
+}
+
