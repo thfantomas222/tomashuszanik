@@ -259,56 +259,35 @@
         <p class="modal-artist">Tomas Huszanik</p>
         <h2 class="modal-title" id="youtube2-title">GET IN TOUCH</h2>
         <p class="modal-description">If you would like to collaborate, talk music or work on something together, feel free to reach out.</p>
-        <div class="contact-form">
-          <div class="form-row">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name" />
-          </div>
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="your@email.com" />
-          </div>
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Your message..."></textarea>
-          </div>
-          <button class="form-submit" onclick="this.closest('.modal').classList.remove('is-open')">SEND MESSAGE</button>
-        </div>
+        
+		  <form class="contact-form" id="gform"
+  action="https://docs.google.com/forms/d/e/1FAIpQLSe8zB4-dvAdCQHeMQ6iI4FPJ9vG9BhTrNVmbwlupv2zy0tUNg/formResponse"
+  method="POST"
+  target="hidden-iframe"
+  onsubmit="formSubmitted()">
+  <div class="form-row">
+    <label for="name">Name</label>
+    <input type="text" name="entry.1441230332" id="name" placeholder="Your name" required />
+  </div>
+  <div class="form-row">
+    <label for="email">Email</label>
+    <input type="email" name="entry.738082925" id="email" placeholder="your@email.com" required />
+  </div>
+  <div class="form-row">
+    <label for="message">Message</label>
+    <textarea name="entry.28615518" id="message" placeholder="Your message..." required></textarea>
+  </div>
+  <button type="submit" class="form-submit">SEND MESSAGE</button>
+  <p id="form-success" style="display:none; margin-top:12px; color:#555; font-size:13px;">
+    ✓ Message sent — thank you!
+  </p>
+</form>
+<iframe name="hidden-iframe" style="display:none;"></iframe>
+		  
       </div>
     </div>
   </div>
 </div>
-
-
-
-	<form class="contact-form" id="gform"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSe8zB4-dvAdCQHeMQ6iI4FPJ9vG9BhTrNVmbwlupv2zy0tUNg/formResponse?usp=pp_url"
-  method="POST"
-  target="hidden-iframe"
-  onsubmit="formSubmitted()">
-
-  <div class="form-row">
-    <label for="name">NAME</label>
-    <input type="text" name="entry.1441230332" id="name" placeholder="Your name" required />
-  </div>
-  <div class="form-row">
-    <label for="email">EMAIL</label>
-    <input type="email" name="entry.738082925" id="email" placeholder="your@email.com" required />
-  </div>
-  <div class="form-row">
-    <label for="message">MESSAGE</label>
-    <textarea name="entry.28615518" id="message" placeholder="Your message..." required></textarea>
-  </div>
-
-  <button type="submit" class="form-submit">SEND MESSAGE</button>
-  <p class="form-success" id="form-success" style="display:none; margin-top:12px; color:#555; font-size:13px;">
-    ✓ Message sent — thank you!
-  </p>
-</form>
-
-<!-- Hidden iframe catches the Google redirect so page doesn't navigate away -->
-<iframe name="hidden-iframe" style="display:none;"></iframe>
-  
 
   <script src="js/main.js"></script>
  
