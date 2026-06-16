@@ -1,14 +1,24 @@
-// Rovina 7 — main.js
+// main.js
+
+// ─── FORM SUBMIT ──────────────────────────────────────────────────
+// Must be global so the inline onsubmit="formSubmitted()" can find it
+function formSubmitted() {
+  setTimeout(() => {
+    const success = document.getElementById('form-success');
+    const form = document.getElementById('gform');
+    if (success) success.style.display = 'block';
+    if (form) form.reset();
+  }, 500);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ─── MODAL SYSTEM ─────────────────────────────────────────────────
+  // ─── MODAL SYSTEM ───────────────────────────────────────────────
   function openModal(id) {
     const modal = document.getElementById('modal-' + id);
     if (!modal) return;
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    // focus close button for accessibility
     modal.querySelector('.modal-close').focus();
   }
 
@@ -17,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Open on album cover click or Enter/Space key
-  document.querySelectorAll('[data-album]').forEach(cover => {
-    cover.addEventListener('click', () => openModal(cover.dataset.album));
-    cover.addEventListener('keydown', (e) => {
+  // Open on click or Enter/Space
+  document.querySelectorAll('[data-album]').forEach(el => {
+    el.addEventListener('click', () => openModal(el.dataset.album));
+    el.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openModal(cover.dataset.album);
+        openModal(el.dataset.album);
       }
     });
   });
@@ -33,38 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => closeModal(btn.closest('.modal')));
   });
 
-  // Close via backdrop click
+  // Close via backdrop
   document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
     backdrop.addEventListener('click', () => closeModal(backdrop.closest('.modal')));
   });
 
-  // Close via Escape key
+  // Close via Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal.is-open').forEach(closeModal);
     }
   });
 
-  // ─── SCROLL FADE-IN ───────────────────────────────────────────────
-  // Elements to animate. Add the class 'reveal' to anything you want
-  // to drift up and fade in as it enters the viewport.
+  // ─── SCROLL REVEAL ──────────────────────────────────────────────
   const revealEls = document.querySelectorAll('.reveal');
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
-        revealObserver.unobserve(entry.target); // animate once only
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.12,      // trigger when 12% of element is visible
-    rootMargin: '0px 0px -40px 0px' // slight offset so it fires just before fully in view
-  });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   revealEls.forEach(el => revealObserver.observe(el));
 
-  // ─── ACTIVE NAV HIGHLIGHTING ──────────────────────────────────────
+  // ─── ACTIVE NAV ─────────────────────────────────────────────────
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.main-nav a');
 
@@ -78,45 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.5 });
 
-  sections.forEach(section => navObserver.observe(section));
+  sections.forEach(s => navObserver.observe(s));
 
-  // ─── SMOOTH SCROLL TO CONTACT ────────────────────────────────────
-  document.querySelectorAll('a[href="#contact"], .contact-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const target = document.getElementById('contact');
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // ─── ALBUM CLICK FEEDBACK ────────────────────────────────────────
-  document.querySelectorAll('[data-album]').forEach(cover => {
-    cover.addEventListener('click', () => {
-      cover.style.transform = 'scale(0.97)';
-      setTimeout(() => { cover.style.transform = ''; }, 150);
-    });
-  });
-
-});
-
-document.querySelectorAll('[data-album]').forEach(el => {
-  el.addEventListener('click', () => {
-    const id = el.dataset.album;
-    document.getElementById('modal-' + id)?.classList.add('is-open');
-  });
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      el.click();
-    }
-  });
-
-    function formSubmitted() {
-  setTimeout(() => {
-    document.getElementById('form-success').style.display = 'block';
-    document.getElementById('gform').reset();
-  }, 500);
-}
 });
