@@ -112,4 +112,11 @@ document.querySelectorAll('[data-album]').forEach(el => {
       el.click();
     }
   });
+
+    function formSubmitted() {
+  setTimeout(() => {
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('gform').reset();
+  }, 500);
+}
 });
