@@ -198,6 +198,48 @@
     </div>
   </div>
 
+  <!-- Contact Form Modal -->
+<div class="modal" id="modal-youtube2" role="dialog" aria-modal="true" aria-labelledby="youtube2-title">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel">
+    <button class="modal-close" aria-label="Close">&#x2715;</button>
+    <div class="modal-inner">
+      <div class="modal-art modal-art-youtube">
+        <img src="images/mail.jpg" alt="mail" />
+       </div>
+      <div class="modal-content">
+        <p class="modal-artist">Tomas Huszanik</p>
+        <h2 class="modal-title" id="youtube2-title">GET IN TOUCH</h2>
+        <p class="modal-description">If you would like to collaborate, talk music or work on something together, feel free to reach out.</p>
+        
+		<form class="contact-form" id="gform"
+  			action="https://formspree.io/f/mvznygwz"
+  			method="POST"
+  			target="hidden-iframe"
+  			onsubmit="formSubmitted()">
+  			<div class="form-row">
+    			<label for="name">Name</label>
+    			<input type="text" name="name" id="name" placeholder="Your name" />
+  			</div>
+  			<div class="form-row">
+    			<label for="email">Email</label>
+    			<input type="email" name="email" id="email" placeholder="your@email.com" />
+  			</div>
+  			<div class="form-row">
+    			<label for="message">Message</label>
+    			<textarea name="message" id="message" placeholder="Your message..."></textarea>
+  			</div>
+  				<button type="submit" class="form-submit">SEND MESSAGE</button>
+ 				<p id="form-success" style="display:none; margin-top:12px; color:#555; font-size:13px;">
+    			✓ Message sent — thank you!
+  				</p>
+		</form>
+		<iframe name="hidden-iframe" style="display:none;"></iframe>
+		</div>
+    </div>
+  </div>
+</div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
