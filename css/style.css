@@ -154,6 +154,16 @@ body {
   max-width: 380px;
 }
 
+.contact-trigger {
+  background-color: transparent;
+  padding: 11px 0 0 0;
+  cursor: pointer;
+}
+
+.contact-trigger:hover {
+  opacity: 0.6;
+}
+
 /* --- DIVIDER --- */
 .divider {
   border: none;
@@ -674,6 +684,71 @@ audio::-webkit-media-controls-panel {
   background: transparent;
 }
 
+.modal-content .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.modal-content .form-row label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.modal-content .form-row input,
+.modal-content .form-row textarea {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #222;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #ccc;
+  padding: 8px 0;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.modal-content .form-row input:focus,
+.modal-content .form-row textarea:focus {
+  border-bottom-color: #0d0d0d;
+}
+
+.modal-content .form-row input::placeholder,
+.modal-content .form-row textarea::placeholder {
+  color: #aaa;
+}
+
+.modal-content .form-row textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.modal-content .form-submit {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  background: transparent;
+  border: 1.5px solid #0d0d0d;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  margin-top: 8px;
+}
+
+.modal-content .form-submit:hover {
+  background: #0d0d0d;
+  color: #f0ece3;
+}
+
 /* Responsive */
 @media (max-width: 580px) {
   .modal-inner { flex-direction: column; }
@@ -681,4 +756,6 @@ audio::-webkit-media-controls-panel {
   .modal-content { padding: 24px 20px; }
   .modal { padding: 12px; }
 }
+
+
 
