@@ -69,6 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach(el => revealObserver.observe(el));
 
+// Photo gallery lightbox
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const lightbox = document.getElementById('gallery-lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = item.dataset.full;
+    img.alt = item.querySelector('img').alt;
+    lightbox.classList.add('is-open');
+  });
+});
+
+document.getElementById('gallery-lightbox').addEventListener('click', () => {
+  document.getElementById('gallery-lightbox').classList.remove('is-open');
+});
+  
   // ─── ACTIVE NAV ─────────────────────────────────────────────────
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.main-nav a');
